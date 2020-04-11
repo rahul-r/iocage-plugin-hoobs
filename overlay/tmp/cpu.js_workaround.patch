@@ -1,0 +1,19 @@
+--- /root/.hoobs/node_modules/@hoobs/systeminfo/lib/cpu.js	2020-04-10 16:34:14.929205625 -0700
++++ /root/.hoobs/node_modules/@hoobs/systeminfo/lib/cpu_new.js	2020-04-10 16:36:18.821269991 -0700
+@@ -668,10 +668,12 @@
+             lines.forEach(function (line) {
+               const parts = line.split(':');
+               if (parts.length > 0) {
+-                const temp = parseFloat(parts[1].replace(',', '.'));
+-                if (temp > result.max) result.max = temp;
+-                sum = sum + temp;
+-                result.cores.push(temp);
++                if (typeof parts[1] !== 'undefined') {
++                  const temp = parseFloat(parts[1].replace(',', '.'));
++                  if (temp > result.max) result.max = temp;
++                  sum = sum + temp;
++                  result.cores.push(temp);
++                }
+               }
+             });
+             if (result.cores.length) {
