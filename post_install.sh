@@ -31,9 +31,8 @@ MAC=`env LC_ALL=C tr -c -d '0123456789abcdef' < /dev/urandom | head -c 12 | sed 
 # Change the UI port to 80
 UI_PORT=80
 # Update the config file
-jq --arg UI_PORT $UI_PORT --arg MAC $MAC --arg PIN $PIN '.server.port = ($UI_PORT  | tonumber) | .bridge.pin = $PIN | .bridge.username = $MAC' /root/.hoobs/etc/config.json > /tmp/config_tmp.json
-rm /root/.hoobs/etc/config.json
-mv /tmp/config_tmp.json /root/.hoobs/etc/config.json
+mkdir -p /root/.hoobs/etc
+jq --arg UI_PORT $UI_PORT --arg MAC $MAC --arg PIN $PIN '.server.port = ($UI_PORT  | tonumber) | .bridge.pin = $PIN | .bridge.username = $MAC' /root/.hoobs/default.json > /root/.hoobs/etc/config.json
 
 # Install process manager autostart hoobs
 npm install -g pm2
