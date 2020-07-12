@@ -12,7 +12,8 @@
         "avahi-libdns",
         "gcc",
         "nss_mdns",
-        "jq"
+        "jq",
+        "ffmpeg"
     ],
     "packagesite": "http://pkg.FreeBSD.org/FreeBSD:11:amd64/quarterly",
     "fingerprints": {
